@@ -9,9 +9,10 @@ const MongoInventoryRepository = new MongoRepository();
 
 const inventoryUseCase = new InventoryUseCase(MongoInventoryRepository);
 
-const { createInventory } = new InventoryController(inventoryUseCase);
+const { createInventory, updateInventory, findInventoryById, deleteInventory } =
+  new InventoryController(inventoryUseCase);
 
-Inventory.get("/", () => {});
+Inventory.get("/", findInventoryById);
 Inventory.post("/", createInventory);
-Inventory.put("/", () => {});
-Inventory.delete("/", () => {});
+Inventory.put("/", updateInventory);
+Inventory.delete("/", deleteInventory);
