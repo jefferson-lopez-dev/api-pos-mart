@@ -12,6 +12,8 @@
 
 **Assign Boxes:**
 
+- buscar las cajas asignadas del user
+- buscar las cajas asignadas del user de un solo inventory
 - Create an assignment of a box for the inventory
 - Delete an assignment of a box
 

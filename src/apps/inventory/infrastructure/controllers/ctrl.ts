@@ -11,14 +11,17 @@ export class InventoryController {
   constructor(private useCase: InventoryUseCase) {}
   public findInventoryById = async (req: Request, res: Response) => {
     const { body, query } = req;
-    const { id } = query as ReqTypes;
+    const { id, create_by } = query as ReqTypes;
 
     if (id !== undefined || id !== "") {
-      const Inventory = await this.useCase.useFindById(String(id));
+      const Inventory = await this.useCase.useFindById(
+        String(id),
+        String(create_by)
+      );
       return res.json(Inventory);
     }
 
-    const Inventory = await this.useCase.useFindById(body.uuid);
+    const Inventory = await this.useCase.useFindById(body.uuid, body.create_by);
     return res.json(Inventory);
   };
 

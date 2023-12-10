@@ -3,8 +3,13 @@ import { InventoryRepository } from "../../domain/repository";
 import { Inventory as InventoryModel } from "../models/inventory";
 
 export class MongoRepository implements InventoryRepository {
-  findById(uuid: string): Promise<any> {
-    const inventory = InventoryModel.findOne({ uuid });
+  async findById(uuid: string, create_by: string): Promise<any> {
+    const inventory = await InventoryModel.findOne({ uuid });
+    if (inventory?.create_by !== create_by) {
+      return {
+        message: "Unauthorized access",
+      };
+    }
     return inventory;
   }
   findAll(create_by: string): Promise<any> {

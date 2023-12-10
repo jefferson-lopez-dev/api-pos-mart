@@ -14,8 +14,8 @@ export class InventoryUseCase {
     const invCreated = await this.Inventory.update(data, uuid);
     return invCreated;
   };
-  public useFindById = async (uuid: string) => {
-    const invCreated = await this.Inventory.findById(uuid);
+  public useFindById = async (uuid: string, create_by: string) => {
+    const invCreated = await this.Inventory.findById(uuid, create_by);
     return invCreated;
   };
   public useFindAll = async (create_by: string) => {
