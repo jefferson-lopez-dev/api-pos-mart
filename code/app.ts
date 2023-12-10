@@ -1,6 +1,9 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
-import { InvRoute } from "./apps";
+import {
+  RoutesInventory as RI,
+  RoutesBoxes as RB,
+} from "./inventory/infrastructure/routes";
 
 export const app = express();
 
@@ -10,9 +13,7 @@ const corsConfig: CorsOptions = {
   credentials: true,
 };
 
-//MIDDLEWARES
 app.use(cors(corsConfig));
 app.use(express.json());
-
-//ROUTES
-app.use("/inventory", InvRoute);
+app.use("/boxes", RB.Boxes, RB.Sales);
+app.use("/inventory", RI.Inventory, RI.Folder, RI.Product, RI.AssignedBoxes);
