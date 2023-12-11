@@ -13,7 +13,7 @@ export class MongoRepository implements InventoryRepository {
     return inventory;
   }
   findAll(create_by: string): Promise<any> {
-    const inventory = InventoryModel.find({ create_by });
+    const inventory = InventoryModel.paginate({ create_by });
     return inventory;
   }
   create(Inventory: Inventory): Promise<any> {

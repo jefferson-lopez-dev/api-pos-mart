@@ -1,4 +1,8 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, PaginateModel } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
+import { FolderEntity } from ".././../domain/entity";
+
+interface FolderDocument extends Document, FolderEntity {}
 
 const FolderSchema = new Schema(
   {
@@ -12,6 +16,11 @@ const FolderSchema = new Schema(
   { timestamps: true }
 );
 
-const FolderModel = model("Folder", FolderSchema);
+FolderSchema.plugin(mongoosePaginate);
+
+const FolderModel = model<FolderDocument, PaginateModel<FolderDocument>>(
+  "Folder",
+  FolderSchema
+);
 
 export { FolderModel };

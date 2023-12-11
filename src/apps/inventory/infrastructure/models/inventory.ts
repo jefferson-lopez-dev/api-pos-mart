@@ -1,4 +1,15 @@
-import { Schema, model } from "mongoose";
+import { Document, Schema, model, PaginateModel } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
+
+interface Inventory {
+  uuid: string;
+  name: string;
+  description: string;
+  create_by: string;
+  creation_date: number;
+}
+
+interface InventoryDocument extends Document, Inventory {}
 
 const InventorySchema = new Schema(
   {
@@ -11,6 +22,11 @@ const InventorySchema = new Schema(
   { timestamps: true }
 );
 
-const Inventory = model("Inventory", InventorySchema);
+InventorySchema.plugin(mongoosePaginate);
+
+const Inventory = model<InventoryDocument, PaginateModel<InventoryDocument>>(
+  "Inventory",
+  InventorySchema
+);
 
 export { Inventory };

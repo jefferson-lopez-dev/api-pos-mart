@@ -26,15 +26,9 @@ export class InventoryController {
   };
 
   public findAllInventories = async (req: Request, res: Response) => {
-    const { body, query } = req;
-    const { create_by } = query as ReqTypes;
+    const { body } = req;
 
-    if (create_by !== undefined || create_by !== "") {
-      const Inventory = await this.useCase.useFindAll(String(create_by));
-      return res.json(Inventory);
-    }
-
-    const Inventory = await this.useCase.useFindAll(body.uuid);
+    const Inventory = await this.useCase.useFindAll(body.create_by);
     return res.json(Inventory);
   };
 
