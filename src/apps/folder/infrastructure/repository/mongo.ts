@@ -8,15 +8,14 @@ const Unauthorized = {
 
 export class MongoRepository implements FolderRepository {
   async searchAllFolders(create_by: string): Promise<any> {
-    return await FolderModel.find({ create_by });
+    return await FolderModel.paginate({ create_by });
   }
   async searchInventoryFolders(
     inventory_id: string,
     create_by: string
   ): Promise<any> {
-    console.log(inventory_id);
-    const folders = await FolderModel.find({ inventory_id });
-    if (folders[0]?.create_by !== create_by) return Unauthorized;
+    const folders = await FolderModel.paginate({ inventory_id });
+    if (folders.docs[0]?.create_by !== create_by) return Unauthorized;
     return folders;
   }
   async searchAFolder(folder_uuid: string, create_by: string): Promise<any> {
