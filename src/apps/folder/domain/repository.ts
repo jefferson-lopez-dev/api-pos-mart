@@ -1,4 +1,4 @@
-import { FolderEntity, Folder } from "./entity";
+import { Folder } from "./entity";
 
 export interface FolderRepository {
   //searchs alls
@@ -12,10 +12,7 @@ export interface FolderRepository {
     inventory_id: string
   ): Promise<any>;
   //crud
-  createFolder(folderData: Folder): Promise<FolderEntity | null>;
-  updateFolder(
-    folderData: Folder,
-    folder_uuid: string
-  ): Promise<FolderEntity | null>;
-  deleteFolder(folder_uuid: string): Promise<FolderEntity | null>;
+  createFolder(folderData: Folder): Promise<any>;
+  updateFolder(folderData: Folder, folder_uuid: string): Promise<any>;
+  deleteFolder(folder_uuid: string): Promise<any>;
 }
