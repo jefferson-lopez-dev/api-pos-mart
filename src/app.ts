@@ -1,6 +1,6 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
-import { InvRoute, FolderRoute } from "./apps";
+import { InvRoute, FolderRoute, ProductRoute } from "./apps";
 
 export const app = express();
 
@@ -17,3 +17,4 @@ app.use(express.json());
 //ROUTES
 app.use("/folder", FolderRoute);
 app.use("/inventory", InvRoute);
+app.use("/product", ProductRoute);

@@ -1,6 +1,6 @@
 import { Product } from "./entity";
 
-export interface FolderRepository {
+export interface ProductRepository {
   //searchs alls
   searchAllProducts(create_by: string): Promise<any>;
   searchInventoryProducts(
@@ -11,7 +11,7 @@ export interface FolderRepository {
   searchFolderProducts(folder_uuid: string, create_by: string): Promise<any>;
   searchAProduct(product_uuid: string, create_by: string): Promise<any>;
   //crud
-  createFolder(productData: Product): Promise<any>;
-  updateFolder(productData: Product, folder_uuid: string): Promise<any>;
-  deleteFolder(product_uuid: string): Promise<any>;
+  createProduct(productData: Product): Promise<any>;
+  updateProduct(productData: Product, product_uuid: string): Promise<any>;
+  deleteProduct(product_uuid: string): Promise<any>;
 }
