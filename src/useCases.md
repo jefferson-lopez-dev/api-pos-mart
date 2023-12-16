@@ -10,12 +10,13 @@
 - Update an inventory
 - Delete an inventory and its folders and products
 
-**Assign Boxes:**
+**Assign IB:**
 
-- buscar las cajas asignadas del user
-- buscar las cajas asignadas del user de un solo inventory
-- Create an assignment of a box for the inventory
-- Delete an assignment of a box
+- buscar los inventarios asignados de de una sola caja required id box
+- buscar las cajas asignadas en un inventory - required id inventory
+- Create assignacion
+- Update name of assignment
+- Delete una asignacion
 
 **Folders:**
 

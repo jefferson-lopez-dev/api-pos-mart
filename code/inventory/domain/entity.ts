@@ -21,8 +21,8 @@ export interface InventoryEntity {
 export interface AssignedBoxesEntity {
   uuid: string;
   name: string;
-  assignment: Affiliation;
-  belongs: Affiliation[];
+  box_id: string;
+  inventory_id: string;
   create_by: string;
   creation_date: Date;
 }
