@@ -2,6 +2,23 @@ import express from "express";
 import cors, { CorsOptions } from "cors";
 import { InvRoute, FolderRoute, ProductRoute } from "./apps";
 
+type name = "fo" | "in" | "pr";
+
+function endpoint(name: name) {
+  const entry_point = "/api/pos/";
+  if (name === "fo") {
+    return `${entry_point}folder`;
+  }
+  if (name === "in") {
+    return `${entry_point}inventory`;
+  }
+  if (name === "pr") {
+    return `${entry_point}product`;
+  } else {
+    return entry_point
+  }
+}
+
 export const app = express();
 
 const corsConfig: CorsOptions = {
@@ -15,6 +32,6 @@ app.use(cors(corsConfig));
 app.use(express.json());
 
 //ROUTES
-app.use("/folder", FolderRoute);
-app.use("/inventory", InvRoute);
-app.use("/product", ProductRoute);
+app.use(`${endpoint("fo")}`, FolderRoute);
+app.use(`${endpoint("in")}`, InvRoute);
+app.use(`${endpoint("pr")}`, ProductRoute);
