@@ -5,15 +5,15 @@ import { InvRoute, FolderRoute, ProductRoute } from "./apps";
 type name = "fo" | "in" | "pr";
 
 function endpoint(name: name) {
-  const entry_point = "/api/pos/";
+  const entry_point = "/api/pos";
   if (name === "fo") {
-    return `${entry_point}folder`;
+    return `${entry_point}/folder`;
   }
   if (name === "in") {
-    return `${entry_point}inventory`;
+    return `${entry_point}/inventory`;
   }
   if (name === "pr") {
-    return `${entry_point}product`;
+    return `${entry_point}/product`;
   } else {
     return entry_point
   }
