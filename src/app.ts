@@ -32,6 +32,6 @@ app.use(cors(corsConfig));
 app.use(express.json());
 
 //ROUTES
-app.use(`${endpoint("fo")}`, FolderRoute);
-app.use(`${endpoint("in")}`, InvRoute);
-app.use(`${endpoint("pr")}`, ProductRoute);
+app.use(endpoint("fo"), FolderRoute);
+app.use(endpoint("in"), InvRoute);
+app.use(endpoint("pr"), ProductRoute);
