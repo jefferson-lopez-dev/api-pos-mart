@@ -16,7 +16,7 @@ const {
 } = new Controllers(inventoryUseCase);
 
 InvRoute.post("/alls", findAlls);
-InvRoute.get("/", FindById);
+InvRoute.post("/id", FindById);
 InvRoute.post("/", Create);
 InvRoute.put("/", Update);
-InvRoute.delete("/", Delete);
+InvRoute.delete("/:id", Delete);
