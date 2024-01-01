@@ -15,7 +15,7 @@ function endpoint(name: name) {
   if (name === "pr") {
     return `${entry_point}/product`;
   } else {
-    return entry_point
+    return entry_point;
   }
 }
 
