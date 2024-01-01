@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.InvRoute = void 0;
+const express_1 = require("express");
+const mongo_1 = require("../repository/mongo");
+const use_case_1 = require("../../app/use-case");
+const ctrl_1 = require("../controllers/ctrl");
+exports.InvRoute = (0, express_1.Router)();
+const MongoInventoryRepository = new mongo_1.MongoRepository();
+const inventoryUseCase = new use_case_1.InventoryUseCase(MongoInventoryRepository);
+const { createInventory: Create, updateInventory: Update, findInventoryById: FindById, deleteInventory: Delete, findAllInventories: findAlls, } = new ctrl_1.InventoryController(inventoryUseCase);
+exports.InvRoute.post("/alls", findAlls);
+exports.InvRoute.post("/id", FindById);
+exports.InvRoute.post("/", Create);
+exports.InvRoute.put("/", Update);
+exports.InvRoute.delete("/:id", Delete);

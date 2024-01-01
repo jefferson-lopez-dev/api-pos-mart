@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FolderRoute = void 0;
+const express_1 = require("express");
+const mongo_1 = require("../repository/mongo");
+const useCase_1 = require("../../app/useCase");
+const controllers_1 = require("../controllers");
+exports.FolderRoute = (0, express_1.Router)();
+const MongoFolderRepository = new mongo_1.MongoRepository();
+const folderUseCase = new useCase_1.FoldersUseCase(MongoFolderRepository);
+const { SearchAFolder, SearchForAnInventoryFolder, SearchInventoryFolders, searchAllFolders, createFolder, updateFolder, deleteFolder, } = new controllers_1.FolderController(folderUseCase);
+exports.FolderRoute.post("/search/allFolders", searchAllFolders);
+exports.FolderRoute.post("/search/aFolder", SearchAFolder);
+exports.FolderRoute.post("/search/forAnInventoryFolder", SearchForAnInventoryFolder);
+exports.FolderRoute.post("/search/inventoryFolders", SearchInventoryFolders);
+exports.FolderRoute.post("/", createFolder);
+exports.FolderRoute.put("/", updateFolder);
+exports.FolderRoute.delete("/:folder_uuid", deleteFolder);
