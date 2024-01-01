@@ -42,8 +42,12 @@ export class InventoryController {
   };
 
   public updateInventory = async ({ body }: Request, res: Response) => {
-    const Inventory = await this.useCase.useUpdate(body, body.uuid);
-    return res.json(Inventory);
+    const Inventory: any = await this.useCase.useUpdate(body, body.uuid);
+    return res.json({
+      status: 204,
+      message: "Inventory has been updated",
+      uuid: Inventory.uuid,
+    });
   };
 
   public deleteInventory = async ({ params }: Request, res: Response) => {
