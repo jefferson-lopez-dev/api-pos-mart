@@ -32,7 +32,10 @@ app.use(cors(corsConfig));
 app.use(express.json());
 
 //ROUTES
-app.use("/", (_req: Request, res: Response) => res.send("Mart Pos - API POS"));
+
 app.use(endpoint("fo"), FolderRoute);
 app.use(endpoint("in"), InvRoute);
 app.use(endpoint("pr"), ProductRoute);
+app.use("/", (_req: Request, res: Response) => {
+  res.send("Mart Pos - API POS");
+});
