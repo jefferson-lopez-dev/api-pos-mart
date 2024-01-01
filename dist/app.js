@@ -35,3 +35,6 @@ exports.app.use(express_1.default.json());
 exports.app.use(endpoint("fo"), apps_1.FolderRoute);
 exports.app.use(endpoint("in"), apps_1.InvRoute);
 exports.app.use(endpoint("pr"), apps_1.ProductRoute);
+exports.app.use("/", (_req, res) => {
+    res.send("Mart Pos - API POS");
+});

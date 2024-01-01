@@ -13,12 +13,11 @@ exports.ConnectionDB = void 0;
 const mongoose_1 = require("mongoose");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
-// const { URL_MONGO_DB_ATLAS } = process.env;
-const URL_MONGO_DB_LOCAL = "mongodb://localhost:27017/mart-mvp";
-// const URL_DATABASE = URL_MONGO_DB_ATLAS || URL_MONGO_DB_LOCAL;
+const { URL_MONGO_DB_ATLAS } = process.env;
+const URL_DATABASE = URL_MONGO_DB_ATLAS || "mongodb://localhost:27017/mart-mvp";
 const ConnectionDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, mongoose_1.connect)(URL_MONGO_DB_LOCAL);
+        yield (0, mongoose_1.connect)(URL_DATABASE);
         console.log("● DB is connected");
     }
     catch (error) {
