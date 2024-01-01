@@ -34,7 +34,11 @@ export class InventoryController {
 
   public createInventory = async ({ body }: Request, res: Response) => {
     const Inventory = await this.useCase.useCreate(body);
-    return res.json(Inventory);
+    return res.json({
+      status: 204,
+      message: "New Inventory was created successfully",
+      Inventory,
+    });
   };
 
   public updateInventory = async ({ body }: Request, res: Response) => {
@@ -42,8 +46,8 @@ export class InventoryController {
     return res.json(Inventory);
   };
 
-  public deleteInventory = async ({ body }: Request, res: Response) => {
-    const Inventory = await this.useCase.useDelete(body.uuid);
+  public deleteInventory = async ({ params }: Request, res: Response) => {
+    const Inventory = await this.useCase.useDelete(params.uuid);
     return res.json(Inventory);
   };
 }
