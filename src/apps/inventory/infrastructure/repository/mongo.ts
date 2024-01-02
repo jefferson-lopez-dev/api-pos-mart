@@ -7,6 +7,7 @@ export class MongoRepository implements InventoryRepository {
     const inventory = await InventoryModel.findOne({ uuid });
     if (inventory?.create_by !== create_by) {
       return {
+        status: 404,
         message: "Unauthorized access",
       };
     }

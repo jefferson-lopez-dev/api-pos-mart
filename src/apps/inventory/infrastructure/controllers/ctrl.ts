@@ -1,27 +1,15 @@
 import { Request, Response } from "express";
 import { InventoryUseCase } from "../../app/use-case";
 
-interface ReqTypes {
-  id?: string;
-  create_by?: string;
-  uuid?: string;
-}
-
 export class InventoryController {
   constructor(private useCase: InventoryUseCase) {}
   public findInventoryById = async (req: Request, res: Response) => {
-    const { body, query } = req;
-    const { id, create_by } = query as ReqTypes;
+    const { params } = req;
 
-    if (id !== undefined || id !== "") {
-      const Inventory = await this.useCase.useFindById(
-        String(id),
-        String(create_by)
-      );
-      return res.json(Inventory);
-    }
-
-    const Inventory = await this.useCase.useFindById(body.uuid, body.create_by);
+    const Inventory = await this.useCase.useFindById(
+      params.id,
+      params.create_by
+    );
     return res.json(Inventory);
   };
 
