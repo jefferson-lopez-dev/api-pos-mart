@@ -11,7 +11,11 @@ export class MongoRepository implements InventoryRepository {
         message: "Unauthorized access",
       };
     }
-    return inventory;
+    return {
+      inventory,
+      status: 401,
+      message: "Complete search inventory.",
+    };
   }
   findAll(create_by: string): Promise<any> {
     const inventory = InventoryModel.paginate({ create_by });

@@ -10,18 +10,7 @@ export class InventoryController {
       params.id,
       params.create_by
     );
-    if (Inventory?.status === 401) {
-      return res.json({
-        status: 401,
-        message: "Unauthorized access",
-        Inventory : null
-      })
-    }
-    return res.json({
-      status : 204,
-      message : "Complete search inventory.",
-      Inventory
-    });
+    return res.json(Inventory);
   };
 
   public findAllInventories = async (req: Request, res: Response) => {
