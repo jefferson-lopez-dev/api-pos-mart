@@ -10,14 +10,22 @@ export class InventoryController {
       params.id,
       params.create_by
     );
-    return res.json(Inventory);
+    return res.json({
+      status : 204,
+      message : "Complete search inventory.",
+      Inventory
+    });
   };
 
   public findAllInventories = async (req: Request, res: Response) => {
     const { body } = req;
 
     const Inventory = await this.useCase.useFindAll(body.create_by);
-    return res.json(Inventory);
+    return res.json({
+      status : 204,
+      message : "Complete search inventory.",
+      Inventory
+    });
   };
 
   public createInventory = async ({ body }: Request, res: Response) => {
