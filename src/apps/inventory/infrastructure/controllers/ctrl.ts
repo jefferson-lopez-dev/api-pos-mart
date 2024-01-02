@@ -6,10 +6,14 @@ export class InventoryController {
   public findInventoryById = async (req: Request, res: Response) => {
     const { params } = req;
 
-    const Inventory = await this.useCase.useFindById(
+    const Inventory : any = await this.useCase.useFindById(
       params.id,
       params.create_by
     );
+    if (Inventory?.status === 401) {
+      return Inventory
+      
+    }
     return res.json({
       status : 204,
       message : "Complete search inventory.",
