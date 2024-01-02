@@ -11,8 +11,9 @@ export class InventoryController {
       params.create_by
     );
     if (Inventory?.status === 401) {
-      return Inventory
-      
+      return res.json({
+        Inventory
+      })
     }
     return res.json({
       status : 204,
