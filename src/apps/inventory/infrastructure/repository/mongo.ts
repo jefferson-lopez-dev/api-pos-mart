@@ -13,7 +13,7 @@ export class MongoRepository implements InventoryRepository {
     }
     return {
       inventory,
-      status: 401,
+      status: 204,
       message: "Complete search inventory.",
     };
   }
