@@ -14,7 +14,7 @@ export class InventoryController {
       return res.json({
         status: 401,
         message: "Unauthorized access",
-        Inventory : undefined
+        Inventory : null
       })
     }
     return res.json({
