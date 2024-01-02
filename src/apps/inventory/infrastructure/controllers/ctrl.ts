@@ -12,7 +12,9 @@ export class InventoryController {
     );
     if (Inventory?.status === 401) {
       return res.json({
-        Inventory
+        status: 401,
+        message: "Unauthorized access",
+        Inventory : undefined
       })
     }
     return res.json({
