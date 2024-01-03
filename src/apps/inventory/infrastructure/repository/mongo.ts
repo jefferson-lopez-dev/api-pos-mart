@@ -9,6 +9,7 @@ export class MongoRepository implements InventoryRepository {
       return {
         status: 401,
         message: "Unauthorized access",
+        inventory: null,
       };
     }
     return {
