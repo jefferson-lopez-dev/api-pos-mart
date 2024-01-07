@@ -20,7 +20,7 @@ const {
 FolderRoute.post("/search/allFolders", searchAllFolders);
 FolderRoute.post("/search/aFolder", SearchAFolder);
 FolderRoute.post("/search/forAnInventoryFolder", SearchForAnInventoryFolder);
-FolderRoute.post("/search/inventoryFolders", SearchInventoryFolders);
+FolderRoute.post("/searchInventoryFolders", SearchInventoryFolders);
 FolderRoute.post("/", createFolder);
 FolderRoute.put("/", updateFolder);
 FolderRoute.delete("/:folder_uuid", deleteFolder);
