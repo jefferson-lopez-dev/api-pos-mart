@@ -15,6 +15,9 @@ export class MongoRepository implements FolderRepository {
     create_by: string
   ): Promise<any> {
     const folders = await FolderModel.paginate({ inventory_id });
+    if (folders.docs.length === 0) {
+      return folders;
+    }
     if (folders.docs[0]?.create_by !== create_by) return Unauthorized;
     return folders;
   }
